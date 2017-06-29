@@ -2,11 +2,13 @@ package com.entity;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,6 +24,12 @@ public class EmpPerDetail
 	private int empId;
 	@OneToOne(mappedBy="empPerDetail")
 	private User user;
+	@OneToMany(mappedBy="empPerDetail")
+	private List<EmpExpDetail> listOfEmoExpDetail;
+	@OneToMany(mappedBy="empPerDetail")
+	private List<ChildDetail> listOfChildDetail;
+	@OneToMany(mappedBy="empPerDetail")
+	private List<AcadmicDetail> listOfAcadmicDetail;
 	private String empName;
 	private String gender;
 	private String fatherName;
@@ -71,6 +79,42 @@ public class EmpPerDetail
 	 */
 	public void setUser(User user) {
 		this.user = user;
+	}
+	/**
+	 * @return the listOfEmoExpDetail
+	 */
+	public List<EmpExpDetail> getListOfEmoExpDetail() {
+		return listOfEmoExpDetail;
+	}
+	/**
+	 * @param listOfEmoExpDetail the listOfEmoExpDetail to set
+	 */
+	public void setListOfEmoExpDetail(List<EmpExpDetail> listOfEmoExpDetail) {
+		this.listOfEmoExpDetail = listOfEmoExpDetail;
+	}
+	/**
+	 * @return the listOfChildDetail
+	 */
+	public List<ChildDetail> getListOfChildDetail() {
+		return listOfChildDetail;
+	}
+	/**
+	 * @param listOfChildDetail the listOfChildDetail to set
+	 */
+	public void setListOfChildDetail(List<ChildDetail> listOfChildDetail) {
+		this.listOfChildDetail = listOfChildDetail;
+	}
+	/**
+	 * @return the listOfAcadmicDetail
+	 */
+	public List<AcadmicDetail> getListOfAcadmicDetail() {
+		return listOfAcadmicDetail;
+	}
+	/**
+	 * @param listOfAcadmicDetail the listOfAcadmicDetail to set
+	 */
+	public void setListOfAcadmicDetail(List<AcadmicDetail> listOfAcadmicDetail) {
+		this.listOfAcadmicDetail = listOfAcadmicDetail;
 	}
 	/**
 	 * @return the empName
@@ -329,17 +373,16 @@ public class EmpPerDetail
 	 */
 	@Override
 	public String toString() {
-		return "EmpPerDetail [empId=" + empId + ", user=" + user + ", empName=" + empName + ", gender=" + gender
-				+ ", fatherName=" + fatherName + ", motherName=" + motherName + ", martialStatus=" + martialStatus
-				+ ", spouseName=" + spouseName + ", children=" + children + ", DOB=" + DOB + ", religion=" + religion
-				+ ", identification=" + identification + ", highestQualification=" + highestQualification
-				+ ", designation=" + designation + ", joiningDate=" + joiningDate + ", totWorkExp=" + totWorkExp
-				+ ", startingScalePay=" + startingScalePay + ", startingGrossPay=" + startingGrossPay
-				+ ", currentScalePay=" + currentScalePay + ", currentGrossPay=" + currentGrossPay + ", bankDetail="
-				+ bankDetail + ", contactNumber=" + contactNumber + ", address=" + address + "]";
+		return "EmpPerDetail [empId=" + empId + ", user=" + user + ", listOfEmoExpDetail=" + listOfEmoExpDetail
+				+ ", listOfChildDetail=" + listOfChildDetail + ", listOfAcadmicDetail=" + listOfAcadmicDetail
+				+ ", empName=" + empName + ", gender=" + gender + ", fatherName=" + fatherName + ", motherName="
+				+ motherName + ", martialStatus=" + martialStatus + ", spouseName=" + spouseName + ", children="
+				+ children + ", DOB=" + DOB + ", religion=" + religion + ", identification=" + identification
+				+ ", highestQualification=" + highestQualification + ", designation=" + designation + ", joiningDate="
+				+ joiningDate + ", totWorkExp=" + totWorkExp + ", startingScalePay=" + startingScalePay
+				+ ", startingGrossPay=" + startingGrossPay + ", currentScalePay=" + currentScalePay
+				+ ", currentGrossPay=" + currentGrossPay + ", bankDetail=" + bankDetail + ", contactNumber="
+				+ contactNumber + ", address=" + address + "]";
 	}
-	
-	
-	
 	
 }

@@ -53,6 +53,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+		
 	</bean>
 
 	<!-- Step 3: Setup Hibernate transaction manager -->
