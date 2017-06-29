@@ -1,0 +1,74 @@
+.header{
+	margin-top:-2%;
+	height: 100px;
+	background-color: #e8e7e1;
+	
+}
+.font{
+	font-weight:bold;
+	text-align: center;
+	padding:30px;
+	text-size:50px;
+	 font-family: serif;
+	 word-spacing: 1.5ex;
+    letter-spacing: normal;
+    text-decoration: none;
+    text-transform: none;
+}
+.logo {
+margin-left : 75%;
+margin-top : -8%;
+width : 25%;
+vertical-align : middle;
+border : 0;
+display : inherit;
+}
+.bold
+{
+	font-weight:bold;
+}
+.nav-bottom
+{
+	height: 50px;
+	background-color: #e8e7e1;
+}
+body
+{
+	margin-top:0px;
+}
+.emp
+{
+	border:1px;
+}
+#footer-margin
+{
+	
+	margin-top: -50%;
+}
+#footer-margin1
+{
+	padding:260px;
+}
+.button-middle
+{
+	margin-top:20px;
+}
+.name
+{
+    font-family: serif;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: bolder;
+    font-size: 200%;
+    line-height: 200%;
+    word-spacing: 1.5ex;
+    letter-spacing: normal;
+    text-decoration: none;
+    text-transform: none;
+    text-align: left;
+    text-indent: 0;
+}
+.name_sp {
+font-weight : bold;
+margin-left : 5%;
+}
