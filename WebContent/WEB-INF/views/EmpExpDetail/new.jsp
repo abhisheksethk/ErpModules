@@ -4,140 +4,107 @@
 <html>
 <head>
   <jsp:include page="../layout/bootstrapCdn&ExternalCSS&JavaScript.jsp" />
-<title>Employee Form</title>
+<title>Employee Experience Detail Form</title>
 </head>
 <body>
    
-    <jsp:include page="../layout/empIndexheader.jsp" />
+    <jsp:include page="../layout/navbar-header.jsp" />
+    <div>
+       <form:errors path="serial" />
+       <form:errors path="jobType" />
+       <form:errors path="designation" />
+       <form:errors path="compName" />
+       <form:errors path="compDetail" />
+       <form:errors path="empStartingScalePay" />
+       <form:errors path="empStartingGrossPay" />
+       <form:errors path="empHighestScalePay" />
+       <form:errors path="empHighestGrossPay" />
+       <form:errors path="jobJoiningDate"></form:errors>
+       <form:errors path="jobQuitDate"></form:errors>
+       
+       
+    
+    </div>
   <div class="container">
-  <h2>Employee Personal Detail</h2>
-  <form:form cssClass="form-horizontal" action="save" modelAttribute="empPerDetail" method="POST">
-  <form:hidden path="empId" />
+  <h2>Employee Experience Detail</h2>
+  <form:form cssClass="form-horizontal" action="save" modelAttribute="empExpDetail" method="POST">
+  <form:hidden path="jobId" />
     <div class="form-group">
-      <label class="control-label col-sm-2" >Employee Name</label>
+      <label class="control-label col-sm-2" >Serial</label>
       <div class="col-sm-10">
-        <form:input path="empName" placeholder="Enter Employee Name"/>
+        <form:input path="serial" placeholder="Enter Serial Number "/>
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" >Gender</label>
+      <label class="control-label col-sm-2" >Job Type</label>
       <div class="col-sm-10">          
-        <form:input path="gender" cssClass="form-control"  placeholder="Enter Gender" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >Father Name</label>
-      <div class="col-sm-10">          
-        <form:input path="fatherName" cssClass="form-control"  placeholder="Enter Father Name" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >Mother Name</label>
-      <div class="col-sm-10">
-        <form:input path="motherName" cssClass="form-control"  placeholder="Enter Mother Name" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >Martial Status</label>
-      <div class="col-sm-10">
-        <form:input path="martialStatus" cssClass="form-control"  placeholder="Martial Status" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >Spouse Name</label>
-      <div class="col-sm-10">
-        <form:input path="spouseName" cssClass="form-control"  placeholder="Enter Spouse Name" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >Children</label>
-      <div class="col-sm-10">
-        <form:input path="children" cssClass="form-control"  placeholder="Enter Children Number" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >Date Of Birth</label>
-      <div class="col-sm-10">
-        <form:input path="DOB" class="date"  />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Religion</label>
-      <div class="col-sm-10">
-        <form:input path="religion" cssClass="form-control"  placeholder="Enter Religion" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >Identification</label>
-      <div class="col-sm-10">          
-        <form:textarea path="identification" cssClass="form-control"  placeholder="Enter Identification" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">HighestQualification</label>
-      <div class="col-sm-10">          
-        <form:input path="highestQualification" cssClass="form-control"  placeholder="Enter Highest Qualification" />
+        <form:input path="jobType" cssClass="form-control"  placeholder="Enter Job Type" />
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" >Designation</label>
-      <div class="col-sm-10">
+      <div class="col-sm-10">          
         <form:input path="designation" cssClass="form-control"  placeholder="Enter Designation" />
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" >Joining Date</label>
+      <label class="control-label col-sm-2" >Company Name</label>
       <div class="col-sm-10">
-        <form:input path="joiningDate" class="date"  />
+        <form:input path="compName" cssClass="form-control"  placeholder="Enter Comapny Name" />
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2">TotalWorkExp</label>
-      <div class="col-sm-10">          
-        <form:input path="totWorkExp" cssClass="form-control"  placeholder="Enter Total Work Experience" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">StartingScale Pay</label>
-      <div class="col-sm-10">          
-        <form:input path="startingScalePay" cssClass="form-control"  placeholder="Enter StartingScale Pay" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" >StartingGross Pay</label>
+      <label class="control-label col-sm-2" >Comapany Detail</label>
       <div class="col-sm-10">
-        <form:input path="startingGrossPay" cssClass="form-control"  placeholder="Enter Starting Gross Pay" />
+        <form:textarea path="compDetail" cssClass="form-control"  placeholder="Enter Comapany Detail" />
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">CurrentScale Pay</label>
+      <label class="control-label col-sm-2" >Starting ScalePay</label>
       <div class="col-sm-10">
-        <form:input path="currentScalePay" cssClass="form-control"  placeholder="Enter Current Scale Pay" />
+        <form:input path="empStartingScalePay" cssClass="form-control"  placeholder="Enter Starting ScalePay" />
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">CurrentGross Pay</label>
-      <div class="col-sm-10">          
-        <form:input path="currentGrossPay" cssClass="form-control"  placeholder="Enter Current Gross Pay" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">BankDetails</label>
-      <div class="col-sm-10">          
-        <form:textarea path="bankDetail" cssClass="form-control"  placeholder="Enter Bank Details" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">MobileNumber</label>
+      <label class="control-label col-sm-2" >Starting GrossPay</label>
       <div class="col-sm-10">
-        <form:input path="contactNumber" cssClass="form-control"  placeholder="Enter Mobile Number" />
+        <form:input path="empStartingGrossPay" cssClass="form-control"  placeholder="Enter Starting GrossPay" />
       </div>
     </div>
-
     <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Address</label>
+      <label class="control-label col-sm-2" >Highest ScalePay</label>
+      <div class="col-sm-10">
+        <form:input path="empHighestScalePay" cssClass="form-control"  placeholder="Enter Highest ScalePay"  />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Highest GrossPay</label>
+      <div class="col-sm-10">
+        <form:input path="empHighestGrossPay" cssClass="form-control"  placeholder="Enter Highest GrossPay" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Job JoinigDate</label>
       <div class="col-sm-10">          
-        <form:textarea path="address" cssClass="form-control"  placeholder="Enter Address Details" />
+        <form:input path="jobJoiningDate" class="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Job QuitDate</label>
+      <div class="col-sm-10">          
+        <form:input path="jobQuitDate"  class="date"  />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Profession</label>
+      <div class="col-sm-10">
+        <form:input path="profession" cssClass="form-control"  placeholder="Enter Profession" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Specialization</label>
+      <div class="col-sm-10">          
+        <form:input path="specialization" cssClass="form-control"  placeholder="Enter Specialization" />
       </div>
     </div>
     <div class="form-group">        
@@ -146,7 +113,6 @@
       </div>
     </div>
   </form:form>
-   
 </div>
     <jsp:include page="../layout/footer.jsp" /> 
 </body>

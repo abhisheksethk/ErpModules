@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="empExpDetails")
@@ -22,17 +24,27 @@ public class EmpExpDetail
 	@ManyToOne
 	@JoinColumn(name="empId")
 	private EmpPerDetail empPerDetail;
+	@NotNull
 	private int serial;
+    @NotBlank
 	private String jobType;
+	@NotBlank
 	private String designation ;
+	@NotBlank
 	private String compName;
 	@Type(type="text")
 	private String compDetail ;
+	@NotBlank
 	private String empStartingScalePay;
+	@NotBlank
 	private String empStartingGrossPay;
+	@NotBlank
 	private String empHighestScalePay;
+	@NotBlank
 	private String empHighestGrossPay;
+	@NotNull
 	private Date jobJoiningDate;
+	@NotNull
 	private Date jobQuitDate;
 	private String profession;
 	private String specialization;

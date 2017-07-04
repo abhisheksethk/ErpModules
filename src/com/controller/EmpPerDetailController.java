@@ -2,9 +2,13 @@ package com.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,12 +47,22 @@ public class EmpPerDetailController
 		}
 		
 		@PostMapping("/save")
-		public String saveEmpPerDetail(@ModelAttribute("empPerDetail") EmpPerDetail theEmpPerDetail) {
+		public String saveEmpPerDetail(@Valid @ModelAttribute("empPerDetail") EmpPerDetail theEmpPerDetail,BindingResult theBindingResult,HttpSession session) {
+			   
+			if(theBindingResult.hasErrors())
+			{
+				return "EmpPerDetail/new-empPerDetail";
+			}
+			else
+			{
+				 
+				// save the empPerDetail using our service
+				empPerDetailService.saveEmpPerDetail(theEmpPerDetail);	
+				
+				return "redirect:/empPerDetail/index";
+			}
 			
-			// save the empPerDetail using our service
-			empPerDetailService.saveEmpPerDetail(theEmpPerDetail);	
-			
-			return "redirect:/empPerDetail/index";
+		
 		}
 		
 		@GetMapping("/update")

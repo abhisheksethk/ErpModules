@@ -1,5 +1,7 @@
 package com.entity;
 
+import java.security.MessageDigest;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 import com.sun.istack.internal.NotNull;
 
@@ -26,9 +33,17 @@ public class User
 	@OneToOne
 	@JoinColumn(name="empId")
 	private EmpPerDetail empPerDetail;
-	private int serial;
 	@NotNull
+	@Size(min=4,message="Enter min four character Username")
+	private String userName;
+	@Range(min=0,max=2)
+	@NotNull
+	private int serial;
+	@Email
+	@NotBlank
+	@Column(name="email",unique=true)
 	private String email;
+	@NotBlank
 	private String password;
 	public User() {
 		
@@ -56,6 +71,18 @@ public class User
 	 */
 	public void setEmpPerDetail(EmpPerDetail empPerDetail) {
 		this.empPerDetail = empPerDetail;
+	}
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+	/**
+	 * @param userName the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	/**
 	 * @return the serial
@@ -89,17 +116,28 @@ public class User
 	}
 	/**
 	 * @param password the password to set
+	 * @throws throws Exception 
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String password) throws Exception {
+		String original = password;
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		System.out.println(md);
+		md.update(original.getBytes());
+		byte[] digest = md.digest();
+		System.out.println(digest);
+		StringBuffer sb = new StringBuffer();
+		for (byte b : digest) {
+			sb.append(String.format("%02x", b & 0xff));
+		}
+		this.password = sb.toString();
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", empPerDetail=" + empPerDetail + ", serial=" + serial + ", email=" + email
-				+ ", password=" + password + "]";
+		return "User [userId=" + userId + ", empPerDetail=" + empPerDetail + ", userName=" + userName + ", serial="
+				+ serial + ", email=" + email + ", password=" + password + "]";
 	}
 	
 

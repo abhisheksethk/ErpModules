@@ -9,7 +9,7 @@
      <title>Employee Index</title>
   </head>
   <body>
-     <jsp:include page="../layout/empIndexheader.jsp" />
+     <jsp:include page="../layout/navbar-header.jsp" />
  <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header" >

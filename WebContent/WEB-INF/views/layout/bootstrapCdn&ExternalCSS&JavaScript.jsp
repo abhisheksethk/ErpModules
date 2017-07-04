@@ -9,13 +9,23 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<link type="text/css" 
+ <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js" >
+
+</script>
+      
+      <link type="text/css" 
    rel="stylesheet" 
   href="${pageContext.request.contextPath}/resources/css/custom.css" />
- <script src="${pageContext.request.contextPath}/resources/js/simple.js"></script>	
- 
- <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-         rel = "stylesheet">
-      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  
+    <link type="text/css" 
+   rel="stylesheet" 
+  href="${pageContext.request.contextPath}/resources/css/jquery-ui.structure.min.css" />
+   <link type="text/css" 
+   rel="stylesheet" 
+  href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" />
+    <link type="text/css" 
+   rel="stylesheet" 
+  href="${pageContext.request.contextPath}/resources/css/jquery-ui.theme.min.css" />
+ <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/simple.js"></script>	
+   
  

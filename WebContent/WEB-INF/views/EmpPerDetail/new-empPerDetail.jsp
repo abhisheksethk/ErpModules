@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,11 +8,33 @@
 </head>
 <body>
    
-    <jsp:include page="../layout/empIndexheader.jsp" />
+    <jsp:include page="../layout/navbar-header.jsp" />
+    <div>
+       <form:errors path="empName" />
+       <form:errors path="gender" />
+       <form:errors path="martialStatus" />   
+       <form:errors path="children" />
+       <form:errors path="DOB" />
+       <form:errors path="identification" />
+       <form:errors psth="highestQualification"/>
+       <form:errors psth="designation"/>
+       <form:errors psth="joiningDate"/>
+       <form:errors psth="totWorkExp"/>
+       <form:errors psth="startingScalePay"/>
+       <form:errors psth="startingGrossPay"/>
+       <form:errors psth="currentScalePay"/>
+       <form:errors psth="currentGrossPay"/>
+        <form:errors psth="bankDetail"/>
+         <form:errors psth="contactNumber"/>
+          <form:errors psth="address"/>
+       
+    
+    </div>
   <div class="container">
   <h2>Employee Personal Detail</h2>
   <form:form cssClass="form-horizontal" action="save" modelAttribute="empPerDetail" method="POST">
   <form:hidden path="empId" />
+  
     <div class="form-group">
       <label class="control-label col-sm-2" >Employee Name</label>
       <div class="col-sm-10">
@@ -145,6 +167,7 @@
         <button type="submit" class="btn btn-success">Submit</button>
       </div>
     </div>
+    
   </form:form>
    
 </div>

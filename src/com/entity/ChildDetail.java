@@ -1,5 +1,7 @@
 package com.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,9 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Table
-@Entity(name="childDetails")
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+@Table(name="childdetails")
 public class ChildDetail 
 {
 	@Id
@@ -18,10 +24,15 @@ public class ChildDetail
 	@ManyToOne
 	@JoinColumn(name="empId")
 	private EmpPerDetail empPerDetail;
+	@NotNull
 	private int serial ;
+	@NotBlank
+	@Size(min=4,message="child name minimum 4 character")
 	private String childName;
+	@NotBlank
 	private String gender ;
-	private int DOB;
+	@NotNull
+	private Date DOB;
 	/**
 	 * 
 	 */
@@ -90,13 +101,13 @@ public class ChildDetail
 	/**
 	 * @return the dOB
 	 */
-	public int getDOB() {
+	public Date getDOB() {
 		return DOB;
 	}
 	/**
 	 * @param dOB the dOB to set
 	 */
-	public void setDOB(int dOB) {
+	public void setDOB(Date dOB) {
 		DOB = dOB;
 	}
 	/* (non-Javadoc)

@@ -6,10 +6,10 @@
 <html lang="en">
   <head>
      <jsp:include page="../layout/bootstrapCdn&ExternalCSS&JavaScript.jsp" />
-     <title>Employee Index</title>
+     <title>Employee Experience Detail</title>
   </head>
   <body>
-     <jsp:include page="../layout/empIndexheader.jsp" />
+     <jsp:include page="../layout/navbar-header.jsp" />
  <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header" >
@@ -33,70 +33,49 @@
   <table class="table table-hover table-bordered " id="footer-margin1">
      <thead class="thead-inverse">
       <tr>   
-        <th>Employee Name</th>
-        <th>Gender</th>
-        <th>Father<br>Name</th>
-        <th>Mother<br>Name</th>
-        <th>Martial<br>Status</th>
-        <th>Spouse<br>Name</th>
-        <th>Children</th>
-        <th>Birth<br>Date</th>
-        <th>Religion</th>
-        <th>Identification</th>
-        <th>Highest<br>Qualification</th>
+        <th>JOB ID</th>
+        <th>Serial</th>
+        <th>JobType</th>
         <th>Designation</th>
-        <th>Joining<br>Date</th>
-        <th>Total<br>WorkExperience</th>
+        <th>Company<br>Name</th>
+        <th>Company<br>Detail</th>
         <th>Starting<br>ScalePay</th>
         <th>Starting<br>GrossPay</th>
-        <th>Current<br>ScalePay</th>
-        <th>Current<br>GrossPay</th>
-        <th>Bank<br>Details</th>
-        <th>Mobile<br>Number</th>
-        <th>Address</th>
+        <th>Highest<br>ScalePay</th>
+        <th>Highest<br>GrossPay</th>
+        <th>Joining<br>Date</th>
+        <th>Job<br>QuitDate</th>
+        <th>Profession</th>
+        <th>Specialization</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       
-        <c:forEach var="temp" items="${empPerDetails}">
+        <c:forEach var="temp" items="${empExpDetails}">
         <tr>
-             <!-- construct an "update" link with EmpPersonalDetail id -->
-				<c:url var="updateLink" value="/empPerDetail/update">
-					<c:param name="empPerDetailId" value="${temp.empId}" />
+             <!-- construct an "update" link with EmpExperienceDetail id -->
+				<c:url var="updateLink" value="/empExpDetail/update">
+					<c:param name="empExpDetailId" value="${temp.jobId}" />
 				</c:url>
-				<!-- construct an "delete" link with EmpPerDetail id -->
-				<c:url var="deleteLink" value="/empPerDetail/delete">
-					<c:param name="empPerDetailId" value="${temp.empId}" />
-				</c:url>
-				<c:set var="joinDate" value="${temp.joiningDate}" />
-		        <c:set var="DOB" value="${temp.DOB}"></c:set> 
-		        <c:set var="employee" value="${temp.empName}"></c:set>
-         <td>${employee}</td>
-		 <td>${temp.gender}</td>
-		  <td>${temp.fatherName}</td>
-		 <td>${temp.motherName}</td>
-		  <td>${temp.martialStatus}</td>
-		 <td>${temp.spouseName}</td>
-		 <td>${temp.children}</td>
-		 <td><fmt:formatDate type="date" pattern="dd-MM-YYYY" value="${DOB}" /></td>
-		  <td>${temp.religion}</td>
-		 <td>${temp.identification}</td>
-		  <td>${temp.highestQualification}</td>
+				<c:set var="joinDate" value="${temp.jobJoiningDate}" />
+		        <c:set var="jobQuitDate" value="${temp.jobQuitDate}"></c:set>
+         <td>${temp.jobId}</td>
+		 <td>${temp.serial}</td>
+		  <td>${temp.jobType}</td>
 		 <td>${temp.designation}</td>
+		  <td>${temp.compName}</td>
+		 <td>${temp.compDetail}</td>
+		 <td>${temp.empStartingScalePay}</td>
+		  <td>${temp.empStartingGrossPay}</td>
+		 <td>${temp.empHighestScalePay}</td>
+		  <td>${temp.empHighestGrossPay}</td>
 		 <td><fmt:formatDate type="date" pattern="dd-MM-YYYY" value="${joinDate}" /></td>
-		 <td>${temp.totWorkExp}</td>
-		  <td>${temp.startingScalePay}</td>
-		 <td>${temp.startingGrossPay}</td>
-		  <td>${temp.currentScalePay}</td>
-		 <td>${temp.currentGrossPay}</td>
-		 <td>${temp.bankDetail}</td>
-		 <td>${temp.contactNumber}</td>
-		 <td>${temp.address}</td>
+		 <td><fmt:formatDate type="date" pattern="dd-MM-YYYY" value="${jobQuitDate}" /></td>
+		 <td>${temp.profession}</td>
+		  <td>${temp.specialization}</td>
 	     <td>
 			<!-- display the update link --> <a href="${updateLink}">Update</a>
-			<a href="${deleteLink}"
-			onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 		</td>	
 		</tr>  
         </c:forEach>

@@ -6,7 +6,7 @@
 </head>
 <body>
   
-	<jsp:include page="../layout/header-navbar.jsp" />
+	<jsp:include page="../layout/navbar-header.jsp" />
      <div class="container">
         <div class="alert alert-success alert-dismissable fade in">
          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

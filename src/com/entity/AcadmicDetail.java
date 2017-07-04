@@ -9,9 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-@Table
-@Entity(name="acadmicDetails")
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+@Table(name="acaddetails")
 public class AcadmicDetail
 {
 	@Id
@@ -20,13 +23,21 @@ public class AcadmicDetail
 	@ManyToOne
 	@JoinColumn(name="empId")
 	private EmpPerDetail empPerDetail;
+	@NotNull
 	private int serial;
+	@NotBlank
 	private String certifiedDegree ;
+	@NotBlank
 	private String discipline;
+	@NotBlank
 	private String boardUniversity ;
+	@NotNull
 	private Date   passingYear ;
+	@NotBlank
 	private String marksObtained ;
+	@NotBlank
 	private String totalMarks ;
+	@NotBlank
 	private String cgpaOrPercentange;
 	/**
 	 * 

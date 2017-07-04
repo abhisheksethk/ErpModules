@@ -1,3 +1,31 @@
+.select-option
+{
+	 position: relative;
+    left:1.2%;
+     
+}
+
+.register-form
+{
+   margin-top:10px;
+   box-shadow: 0 19px 38px rgba(238,238,238,0.30), 0 15px 12px rgba(238,238,238,0.22);
+  border-radius: 2px;
+  display: inline-block;
+ 
+}
+body {
+  background: #FFFFFF;
+  text-align: center;
+}
+#header-bottomLine
+{
+	position:relative;
+	float:right;
+	margin-right:310px;
+	text-size:1px;
+	margin-top:-40px;;
+}
+
 .header{
 	margin-top:-2%;
 	height: 100px;
@@ -43,7 +71,7 @@ body
 #footer-margin
 {
 	
-	margin-top: -50%;
+	margin-top: 10%;
 }
 #footer-margin1
 {

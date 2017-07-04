@@ -2,6 +2,7 @@ package com.entity;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,8 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="empperdetails")
@@ -25,32 +29,51 @@ public class EmpPerDetail
 	@OneToOne(mappedBy="empPerDetail")
 	private User user;
 	@OneToMany(mappedBy="empPerDetail")
-	private List<EmpExpDetail> listOfEmoExpDetail;
+	private List<EmpExpDetail> listOfEmoExpDetail =new ArrayList<>();
 	@OneToMany(mappedBy="empPerDetail")
-	private List<ChildDetail> listOfChildDetail;
+	private List<ChildDetail> listOfChildDetail= new ArrayList<>();
 	@OneToMany(mappedBy="empPerDetail")
-	private List<AcadmicDetail> listOfAcadmicDetail;
+	private List<AcadmicDetail> listOfAcadmicDetail=new ArrayList<AcadmicDetail>();
+	@NotBlank
+	@Size(min=5,message="Enter minimum 5 character long Employee Name")
 	private String empName;
+	@NotBlank
 	private String gender;
+	
 	private String fatherName;
 	private String motherName;
+	@NotBlank
 	private String martialStatus;
 	private String spouseName;
+	@NotNull
 	private int children;
+	@NotNull
     private Date DOB;
 	private String religion;
 	@Type(type="text")
+	@NotBlank
+	@Size(min=6,message="Enter minimum 6 character long Indentification")
 	private String identification;
+	@NotBlank
 	private String	highestQualification;
+	@NotBlank
 	private String	designation;
+	@NotNull
 	private Date joiningDate;
+	@NotBlank
 	private String	totWorkExp;
+	@NotNull
 	private int	startingScalePay;
+	@NotNull
 	private int	startingGrossPay;
+	@NotNull
 	private int	currentScalePay;
+	@NotNull
 	private int  currentGrossPay;
 	@Type(type="text")
+	@NotBlank
     private String bankDetail;
+	@NotBlank
     private String contactNumber;
     @Type(type="text")
     private String address;
