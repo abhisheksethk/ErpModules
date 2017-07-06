@@ -2,6 +2,7 @@ package com.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.entity.EmpExpDetail;
+import com.entity.EmpPerDetail;
 import com.service.EmpExpDetailService;
+import com.service.EmpPerDetailService;
 @Controller
 @RequestMapping("/empExpDetail")
 public class EmpExpDetailController
 {
 	// need to inject our empExpDetail service
-			@Autowired
+			@Autowired			
 			private EmpExpDetailService empExpDetailService;
+			@Autowired
+			private EmpPerDetailService empPerDetailService;
 			@GetMapping("/index")
 			public String listEmpExpDetails(Model theModel) {
 				
@@ -36,11 +41,18 @@ public class EmpExpDetailController
 			}
 			
 			@GetMapping("/new")
-			public String showFormForAdd(Model theModel)
+			public String showFormForAdd(Model theModel,HttpSession session)
 			{
+				
 				// create model attribute to bind form data
 				EmpExpDetail theEmpExpDetail = new EmpExpDetail();
 				theModel.addAttribute("empExpDetail",theEmpExpDetail );
+				// get empPerDetails from the service
+				List<EmpPerDetail> theEmpPerDetails = empPerDetailService.getEmpPerDetails();
+						
+				// add the empPerDetails to the model
+				theModel.addAttribute("empPerDetails", theEmpPerDetails);
+				
 				return "EmpExpDetail/new";
 			}
 			
@@ -49,14 +61,14 @@ public class EmpExpDetailController
                  
 				if(theBindingResult.hasErrors())
 				{
-					return "ChildrenDetail/new";
+					return "EmpExpDetail/new";
 				}
 				else
-				{
+				{     
 					// save the empExpDetail using our service
 					empExpDetailService.saveEmpExpDetail(theEmpExpDetail);	
 					
-					return "redirect:/empExpDetail/index";
+					return "redirect:/acadmicDetail/new";
 				}
 				
 			}

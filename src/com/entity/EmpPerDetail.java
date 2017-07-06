@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,8 +25,6 @@ public class EmpPerDetail
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int empId;
-	@OneToOne(mappedBy="empPerDetail")
-	private User user;
 	@OneToMany(mappedBy="empPerDetail")
 	private List<EmpExpDetail> listOfEmoExpDetail =new ArrayList<>();
 	@OneToMany(mappedBy="empPerDetail")
@@ -91,18 +88,7 @@ public class EmpPerDetail
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
-	/**
-	 * @return the user
-	 */
-	public User getUser() {
-		return user;
-	}
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 	/**
 	 * @return the listOfEmoExpDetail
 	 */
@@ -394,18 +380,22 @@ public class EmpPerDetail
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "EmpPerDetail [empId=" + empId + ", user=" + user + ", listOfEmoExpDetail=" + listOfEmoExpDetail
-				+ ", listOfChildDetail=" + listOfChildDetail + ", listOfAcadmicDetail=" + listOfAcadmicDetail
-				+ ", empName=" + empName + ", gender=" + gender + ", fatherName=" + fatherName + ", motherName="
-				+ motherName + ", martialStatus=" + martialStatus + ", spouseName=" + spouseName + ", children="
-				+ children + ", DOB=" + DOB + ", religion=" + religion + ", identification=" + identification
+		return "EmpPerDetail [empId=" + empId + ", listOfEmoExpDetail=" + listOfEmoExpDetail + ", listOfChildDetail="
+				+ listOfChildDetail + ", listOfAcadmicDetail=" + listOfAcadmicDetail + ", empName=" + empName
+				+ ", gender=" + gender + ", fatherName=" + fatherName + ", motherName=" + motherName
+				+ ", martialStatus=" + martialStatus + ", spouseName=" + spouseName + ", children=" + children
+				+ ", DOB=" + DOB + ", religion=" + religion + ", identification=" + identification
 				+ ", highestQualification=" + highestQualification + ", designation=" + designation + ", joiningDate="
 				+ joiningDate + ", totWorkExp=" + totWorkExp + ", startingScalePay=" + startingScalePay
 				+ ", startingGrossPay=" + startingGrossPay + ", currentScalePay=" + currentScalePay
 				+ ", currentGrossPay=" + currentGrossPay + ", bankDetail=" + bankDetail + ", contactNumber="
 				+ contactNumber + ", address=" + address + "]";
 	}
+	
 	
 }

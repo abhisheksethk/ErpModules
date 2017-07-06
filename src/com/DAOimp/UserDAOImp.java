@@ -34,5 +34,12 @@ public class UserDAOImp implements UserDAO {
 		List<User> userDetails = theQuery.getResultList();
 		return userDetails;
 	}
+	@Override
+	public User getUserDetail(int theId) {
+		Session currentSession = sessionFactory.getCurrentSession();		
+		// now retrieve/read from database using the primary key
+		User theUserDetail = currentSession.get(User.class, theId);	
+		return theUserDetail;	
+	}
 	
 }

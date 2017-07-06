@@ -18,7 +18,7 @@
 				<form:form action="processLogin" modelAttribute="user">
 					<h3>Please Login</h3>
 					<div class="form-group">
-					 UserType <form:select path="serial">
+					  <form:select path="serial">
 					      <form:option value="1" label="Admin"></form:option>
 					      <form:option value="0" label="Employee"></form:option>
 					      <form:option value="2" label="Others"></form:option>
@@ -27,7 +27,11 @@
 					<div class="form-group">
 						<form:input path="userName" cssClass="form-control"
 							placeholder="Enter UserName" name="userName" />
-					</div>http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1403812
+					</div>
+					<div class="form-group">
+						<form:input path="email" cssClass="form-control"
+							placeholder="Enter email" />
+					</div>
 					<div class="form-group">
 						<form:input path="password" cssClass="form-control"
 							placeholder="Enter password" />

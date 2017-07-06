@@ -82,7 +82,9 @@
       
     </tbody>
   </table>
-   
+    <ul class="pager">
+      <li ><a href="${pageContext.request.contextPath}/acadmicDetail/index">Next</a></li>
+      </ul> 
 </div>
     <jsp:include page="../layout/footer.jsp" />
   </body>

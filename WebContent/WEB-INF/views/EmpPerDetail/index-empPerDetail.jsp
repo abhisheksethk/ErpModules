@@ -30,9 +30,10 @@
  <div class="container"> 
  <h2 class="text-center">Employee Personal Details</h2>
  
-  <table class="table table-hover table-bordered " id="footer-margin1">
+  <table class="table table-hover table-bordered " >
      <thead class="thead-inverse">
       <tr>   
+         <th>EmpId</th>
         <th>Employee Name</th>
         <th>Gender</th>
         <th>Father<br>Name</th>
@@ -65,14 +66,10 @@
 				<c:url var="updateLink" value="/empPerDetail/update">
 					<c:param name="empPerDetailId" value="${temp.empId}" />
 				</c:url>
-				<!-- construct an "delete" link with EmpPerDetail id -->
-				<c:url var="deleteLink" value="/empPerDetail/delete">
-					<c:param name="empPerDetailId" value="${temp.empId}" />
-				</c:url>
 				<c:set var="joinDate" value="${temp.joiningDate}" />
 		        <c:set var="DOB" value="${temp.DOB}"></c:set> 
-		        <c:set var="employee" value="${temp.empName}"></c:set>
-         <td>${employee}</td>
+		 <td>${temp.empId}</td>      
+         <td>${temp.empName}</td>
 		 <td>${temp.gender}</td>
 		  <td>${temp.fatherName}</td>
 		 <td>${temp.motherName}</td>
@@ -95,15 +92,17 @@
 		 <td>${temp.address}</td>
 	     <td>
 			<!-- display the update link --> <a href="${updateLink}">Update</a>
-			<a href="${deleteLink}"
-			onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+			
 		</td>	
 		</tr>  
         </c:forEach>
       
     </tbody>
+    
   </table>
-   
+   <ul class="pager ">
+      <li ><a href="${pageContext.request.contextPath}/empExpDetail/index">Next</a></li>
+      </ul>
 </div>
     <jsp:include page="../layout/footer.jsp" />
   </body>

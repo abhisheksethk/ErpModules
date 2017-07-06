@@ -37,7 +37,7 @@
         <th>Serial</th>
         <th>ChildName</th>
         <th>Gender</th>
-        <th>DateOf<br>Birth</th>
+        <th>Date Of Birth</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -63,7 +63,11 @@
       
     </tbody>
   </table>
-   
+     <ul class="pager">
+     <li ><a href="${pageContext.request.contextPath}/acadmicDetail/index">Previous</a></li>
+      <li ><a href="${pageContext.request.contextPath}/user/index">Next</a></li>
+      
+      </ul> 
 </div>
     <jsp:include page="../layout/footer.jsp" />
   </body>

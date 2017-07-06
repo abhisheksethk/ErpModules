@@ -27,5 +27,11 @@ public class UserServiceImp implements UserService {
 		// TODO Auto-generated method stub
 		return userDAO.getUserDetails();
 	}
+	@Override
+	@Transactional
+	public User getUserDetail(int theId) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserDetail(theId);
+	}
 
 }

@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.entity.ChildDetail;
+import com.entity.EmpPerDetail;
+import com.entity.User;
 import com.service.ChildDetailService;
+import com.service.EmpPerDetailService;
+
 @Controller
 @RequestMapping("/childDetail")
 public class ChildDetailController
@@ -23,6 +27,8 @@ public class ChildDetailController
 	       // need to inject our childDetail service
 				@Autowired
 				private ChildDetailService childDetailService;
+				@Autowired
+				private EmpPerDetailService empPerDetailService;
 				@GetMapping("/index")
 				public String listChildDetails(Model theModel) {
 					
@@ -41,6 +47,13 @@ public class ChildDetailController
 					// create model attribute to bind form data
 					ChildDetail theChildDetail = new ChildDetail();
 					theModel.addAttribute("childDetail",theChildDetail );
+					// get empPerDetails from the service
+					List<EmpPerDetail> theEmpPerDetails = empPerDetailService.getEmpPerDetails();
+							
+					// add the empPerDetails to the model
+					theModel.addAttribute("empPerDetails", theEmpPerDetails);
+					User theUser=new User();
+			        theModel.addAttribute("user",theUser);
 					return "ChildrenDetail/new";
 				}
 				
@@ -56,7 +69,7 @@ public class ChildDetailController
 						// save the childDetail using our service
 						childDetailService.saveChildDetail(theChildDetail);	
 						
-						return "redirect:/childDetail/index";
+						return "redirect:/user/signUp";
 					}
 					
 				}

@@ -7,17 +7,16 @@
 <body>
   
 	<jsp:include page="../layout/navbar-header.jsp" />
+     <c:if test="${sessionScope.employee ==0}">
      <div class="container">
         <div class="alert alert-success alert-dismissable fade in">
          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <c:if test="${sessionScope.employee !=0}">
-         <strong>Welcome ${userName}</strong> 
-        </c:if>
-        <c:if test="${sessionScope.employee ==0}">
+        
           <strong>Successfully Employee Created</strong>
-        </c:if>
+        
         </div>
-     </div>  
+     </div> 
+     </c:if> 
      <% String name=request.getParameter("userName");
        session.setAttribute("User",name); 
      %>

@@ -9,4 +9,5 @@ public interface UserDAO
 {
 	public void saveUser(User theUser);
 	public List<User> getUserDetails();
+	public User getUserDetail(int theId);
 }

@@ -12,19 +12,19 @@
 	<jsp:include page="../layout/navbar-header.jsp"  />
 	
 	  <div class="container" >
-	   <div class="row">
-	   <div class="col-lg-8">
-	        <p>Hello</p>
-	   </div>
-		<div class="col-lg-4 register-form" >
-			<div class="jumbotron" >
+	        <div class="panel panel-info">
+              
 			 <c:if test="${sessionScope.serial !=1 }">
-			<h3>Please SignUp</h3>
+			 <div class="panel-heading" >
+			<h3>Please SignUp</h3></div>
 			</c:if>
 			 <c:if test="${sessionScope.serial ==1 }">
-			 <h3>Add Employee</h3>
+			 <div class="panel-heading" >
+			 <h3>Add Employee</h3></div>
 			 </c:if>
-				<form:form action="submit" modelAttribute="user" id="registration_form">
+			 <div class="panel-body" >
+				<form:form action="submit" modelAttribute="user" id="registration_form" method="POST">
+					<form:hidden path="empPerDetail" />
 					<div class="form-group">
 					   <c:if test="${sessionScope.serial !=1 }">
 						Admin :<form:radiobutton path="serial" value="1" />
@@ -32,8 +32,21 @@
 						 <c:if test="${sessionScope.serial ==1 }">
 						 Employee :<form:radiobutton path="serial" value="0" />
 						 </c:if>
-						   <p> <form:errors path="serial" /></p>
-					</div>
+						   <p> <form:errors path="serial" /></p>					   
+					   </div>
+					    <c:if test="${sessionScope.serial ==1 }">
+					<div class="form-group">
+      
+                      
+                      <form:select path="empPerDetail.empId" cssClass="form-control">
+                       <form:option value="-1">Select EmpId</form:option>
+                       <c:forEach items="${empPerDetails}" var="temp" >
+                      <form:option value="${temp.empId}">${temp.empId} ${temp.empName}</form:option>
+                     </c:forEach>
+                    </form:select>
+                    
+                   </div>
+                   </c:if>
 					<div class="form-group">
 						<form:input path="userName" cssClass="form-control"
 							placeholder="Enter UserName" />
@@ -52,7 +65,7 @@
 							<span class="error_form" id="password_error_message"></span>
 					</div>
 					<div class="form-group">
-						<form:input path="password" cssClass="form-control"
+						<form:password path="password" cssClass="form-control"
 							placeholder="Confirm password" id="form_retype_password" />
                            <span class="error_form" id="retype_password_error_message"></span>
                             <p> <form:errors path="password" /></p>
@@ -68,10 +81,14 @@
 					</c:choose>
 					
 				</form:form>
+				   <ul class="pager">
+                     <li class="previous"><a href="${pageContext.request.contextPath}/childDetail/new">Previous</a></li>
+                 
+                     </ul>
+				</div>
 			</div>
 	 	   </div>
-	 	</div>
-	</div>
+	 	
 
 	<jsp:include page="../layout/footer.jsp" />
 	

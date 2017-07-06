@@ -71,7 +71,10 @@
       
     </tbody>
   </table>
-   
+   <ul class="pager">
+       <li class="previous"><a href="${pageContext.request.contextPath}/empExpDetail/index">Previous</a></li>
+      <li class="next"><a href="${pageContext.request.contextPath}/childDetail/index">Next</a></li>
+      </ul>
 </div>
     <jsp:include page="../layout/footer.jsp" />
   </body>

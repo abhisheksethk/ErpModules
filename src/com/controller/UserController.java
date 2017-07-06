@@ -17,24 +17,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.entity.EmpPerDetail;
 import com.entity.User;
+import com.service.EmpPerDetailService;
 import com.service.UserService;
-
-
-
 @Controller
 @RequestMapping("/user")
 public class UserController
 {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private EmpPerDetailService empPerDetailService;
 	@GetMapping("/signUp")
 	public String registration(Model theModel)
 	{
 		User theUser=new User();
         theModel.addAttribute("user",theUser);
+     // get empPerDetails from the service
+     			List<EmpPerDetail> theEmpPerDetails = empPerDetailService.getEmpPerDetails();
+     					
+     			// add the empPerDetails to the model
+     			theModel.addAttribute("empPerDetails", theEmpPerDetails);
+     			
         return "User/newRegisterForm";
 	}
 	@PostMapping("/submit")
@@ -67,20 +74,15 @@ public class UserController
         return "User/loginForm";
     }
    @PostMapping("/processLogin")
-   public String processForm(@Valid @ModelAttribute("user") User theUser,Model theModel,HttpSession session ,BindingResult theBindingResult) throws Exception
+   public String processForm( @ModelAttribute("user") User theUser,Model theModel,HttpSession session ) throws Exception
     {   
-	   
-	   if(theUser==null)
-	   {
-		   return "redirect:/user/signIn";
-	   }
 	   List<User>   userDetail= userService.getUserDetails();
 	   try{
 	    if(validateUser(theUser,userDetail))
 	     {  
 	    	if(theUser.getSerial()==1)
 	    	{
-	    		session.setAttribute("userId",theUser.getUserId());
+	
 	    		session.setAttribute("userName",theUser.getUserName());
 	    		session.setAttribute("serial",theUser.getSerial());
 	    	}
@@ -109,7 +111,7 @@ public class UserController
 	      for(User temp:userDetail) 
 	       {
 	    		
-		   if((x.getSerial()==temp.getSerial()&&x.getEmail().equals(temp.getEmail()))&&(x.getUserName().equals(temp.getUserName())&&x.getPassword().equals(temp.getPassword())))
+		   if(x.getSerial()==temp.getSerial()&&(x.getUserName().equals(temp.getUserName())&&x.getPassword().equals(temp.getPassword())))
 		    {
 			   return true;
 		    }
@@ -124,4 +126,30 @@ public class UserController
           theModel.addAttribute("user",theUser);
     	  return "User/loginError";
       }
+      @GetMapping("/index")
+      public String listUserDetails(Model theModel) {
+			
+    	     // get the serial from our User database
+    		List<User> theUser = userService.getUserDetails();
+					
+			// add the theUser to the model
+			theModel.addAttribute("Users", theUser);
+			
+			return "User/index";
+		}
+      @GetMapping("/update")
+		public String showFormForUpdate(@RequestParam("empId") int theId,
+										Model theModel) 
+		{
+			
+			// get the User from our service
+			User theUser = userService.getUserDetail(theId);	
+			
+			// set childDetail as a model attribute to pre-populate the form
+			theModel.addAttribute("user", theUser);
+			
+			// send over to our form		
+			return "User/newRegisterForm";
+		}
+		
 }

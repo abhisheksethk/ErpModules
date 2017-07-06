@@ -2,7 +2,7 @@ package com.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.entity.EmpPerDetail;
 import com.service.EmpPerDetailService;
 
 @Controller
 @RequestMapping("/empPerDetail")
+@SessionAttributes("EmpId")
 public class EmpPerDetailController
 {
 	// need to inject our empPerDetail service
@@ -47,7 +49,7 @@ public class EmpPerDetailController
 		}
 		
 		@PostMapping("/save")
-		public String saveEmpPerDetail(@Valid @ModelAttribute("empPerDetail") EmpPerDetail theEmpPerDetail,BindingResult theBindingResult,HttpSession session) {
+		public String saveEmpPerDetail(@Valid @ModelAttribute("empPerDetail") EmpPerDetail theEmpPerDetail,BindingResult theBindingResult) {
 			   
 			if(theBindingResult.hasErrors())
 			{
@@ -55,11 +57,10 @@ public class EmpPerDetailController
 			}
 			else
 			{
-				 
+				
 				// save the empPerDetail using our service
 				empPerDetailService.saveEmpPerDetail(theEmpPerDetail);	
-				
-				return "redirect:/empPerDetail/index";
+				return "redirect:/empExpDetail/new";
 			}
 			
 		

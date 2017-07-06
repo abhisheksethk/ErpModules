@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.entity.AcadmicDetail;
+import com.entity.EmpPerDetail;
 import com.service.AcadmicDetailService;
+import com.service.EmpPerDetailService;
 @Controller
 @RequestMapping("/acadmicDetail")
 public class AcadmicDetailController 
@@ -23,6 +25,8 @@ public class AcadmicDetailController
 	 // need to inject our acadmicDetail service
 				@Autowired
 				private AcadmicDetailService acadmicDetailService;
+				@Autowired
+				private EmpPerDetailService empPerDetailService;
 				@GetMapping("/index")
 				public String listAcadmicDetails(Model theModel) {
 					
@@ -41,6 +45,12 @@ public class AcadmicDetailController
 					// create model attribute to bind form data
 					AcadmicDetail theAcadmicDetail = new AcadmicDetail();
 					theModel.addAttribute("acadmicDetail",theAcadmicDetail );
+					// get empPerDetails from the service
+					List<EmpPerDetail> theEmpPerDetails = empPerDetailService.getEmpPerDetails();
+							
+					// add the empPerDetails to the model
+					theModel.addAttribute("empPerDetails", theEmpPerDetails);
+					
 					return "AcadmicDetail/new";
 				}
 				
@@ -56,7 +66,7 @@ public class AcadmicDetailController
 						// save the acadmicDetail using our service
 						acadmicDetailService.saveAcadmicDetail(theAcadmicDetail);	
 						
-						return "redirect:/acadmicDetail/index";
+						return "redirect:/acadmicDetail/new";
 					}
 					
 				}

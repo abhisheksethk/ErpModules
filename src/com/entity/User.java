@@ -4,8 +4,6 @@ import java.security.MessageDigest;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -26,13 +24,11 @@ import com.sun.istack.internal.NotNull;
 @Table(name="user")
 public class User 
 {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="userId")
-	private int userId;
+	
 	@OneToOne
 	@JoinColumn(name="empId")
 	private EmpPerDetail empPerDetail;
+	@Id
 	@NotNull
 	@Size(min=4,message="Enter min four character Username")
 	private String userName;
@@ -48,18 +44,7 @@ public class User
 	public User() {
 		
 	}
-	/**
-	 * @return the userId
-	 */
-	public int getUserId() {
-		return userId;
-	}
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	
 	/**
 	 * @return the empPerDetail
 	 */
@@ -116,7 +101,6 @@ public class User
 	}
 	/**
 	 * @param password the password to set
-	 * @throws throws Exception 
 	 */
 	public void setPassword(String password) throws Exception {
 		String original = password;
@@ -136,9 +120,11 @@ public class User
 	 */
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", empPerDetail=" + empPerDetail + ", userName=" + userName + ", serial="
+		return "User [  empPerDetail=" + empPerDetail + ", userName=" + userName + ", serial="
 				+ serial + ", email=" + email + ", password=" + password + "]";
 	}
+	
+		
 	
 
 }

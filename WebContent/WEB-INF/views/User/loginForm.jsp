@@ -13,15 +13,18 @@
 	
 	<div class="container">
 	   <div class="row">
-	    <div class="col-lg-8">
+	    <div class="col-sm-8">
 	        
 	   </div>
-		<div class="col-lg-4 register-form">
+		<div class="col-sm-4 register-form">
 			<div class="jumbotron" style="margin-top: 30%">
-				<form:form action="processLogin" modelAttribute="user">
-					<h3>Please Login</h3>
+				<form:form action="processLogin" modelAttribute="user" method="POST">
+				     <div class="panel panel-default">
+                          <div class="panel-heading"><h4>Please Login</h4></div>
+                      </div>
 					<div class="form-group">
-					 UserType <form:select path="serial">
+					  <form:select path="serial" cssClass="form-control" id="sell">
+					      <form:option value="-1" label="User Types"></form:option>
 					      <form:option value="1" label="Admin"></form:option>
 					      <form:option value="0" label="Employee"></form:option>
 					      <form:option value="2" label="Others"></form:option>
